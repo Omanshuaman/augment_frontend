@@ -1,38 +1,128 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:600&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background: #fff;
+}
 .App {
-  text-align: center;
+  width: 70%; /* add this line to set the width to 80% */
+  margin-left: 15%;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loginn {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.login-button {
+  position: relative;
+  display: inline-flex;
+  width: 180px;
+  height: 55px;
+  margin: 0 15px;
+  perspective: 1000px;
+}
+
+.login-button a {
+  font-size: 19px;
+  letter-spacing: 1px;
+  transform-style: preserve-3d;
+  transform: translateZ(-25px);
+  transition: transform 0.25s;
+  font-family: "Montserrat", sans-serif;
+}
+
+.login-button a:before,
+.login-button a:after {
+  position: absolute;
+  content: "LOG IN";
+  height: 55px;
+  width: 180px;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  border: 5px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
 }
 
-.App-link {
-  color: #61dafb;
+.login-button a:before {
+  color: #fff;
+  background: #000;
+  transform: rotateY(0deg) translateZ(25px);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.login-button a:after {
+  color: #000;
+  transform: rotateX(90deg) translateZ(25px);
+}
+
+.login-button a:hover {
+  transform: translateZ(-25px) rotateX(-90deg);
+}
+.login {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.container {
+  max-width: 800px; /* Change this value according to your requirement */
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+
+.text-primary {
+  color: blue;
+  margin-bottom: 3rem;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0;
+}
+
+.pagination li {
+  margin-right: 0.5rem;
+}
+
+.pagination li a {
+  display: block;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  color: #333;
+  text-decoration: none;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+}
+
+.pagination li a:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+}
+.list-group {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.list-group-item {
+  display: table-row;
+}
+
+.list-group-item:nth-child(even) {
+  background-color: #f2f2f2;
+}
+li {
+  font-size: 1.2em; /* adjust size as needed */
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3em; /* adjust height as needed */
 }
