@@ -46,7 +46,10 @@ const Table = () => {
     };
 
     try {
-      const res = await axios.post("/api/todo", newPin);
+      const res = await axios.post(
+        "https://yellowclassbackend.up.railway.app/api/todo",
+        newPin
+      );
       setPins([...pins, res.data]);
       history.push("/");
     } catch (err) {

@@ -61,7 +61,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        "/api/user",
+        "https://yellowclassbackend.up.railway.app/api/user",
         { name, email, phoneNumber, password },
         config
       );

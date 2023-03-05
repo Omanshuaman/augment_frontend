@@ -98,7 +98,9 @@ const Admin = () => {
 
   const fetchChats = async () => {
     try {
-      const { data } = await axios.get("/api/todo");
+      const { data } = await axios.get(
+        "https://yellowclassbackend.up.railway.app/api/todo"
+      );
 
       setDetails(data);
       console.log(details);
@@ -119,7 +121,7 @@ const Admin = () => {
         },
       };
       const { data } = await axios.post(
-        `/api/user/change-password/${user._id}`,
+        `https://yellowclassbackend.up.railway.app/api/user/change-password/${user._id}`,
         { password },
         config
       );
@@ -163,7 +165,7 @@ const Admin = () => {
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
+        "https://yellowclassbackend.up.railway.app/api/user/login",
         {
           email,
           password,

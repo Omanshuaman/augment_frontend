@@ -43,7 +43,10 @@ const List = () => {
         },
       };
       console.log(user.token);
-      const { data } = await axios.get("/api/todo/organize", config);
+      const { data } = await axios.get(
+        "https://yellowclassbackend.up.railway.app/api/todo/organize",
+        config
+      );
 
       setDetails(data);
       console.log(details);
