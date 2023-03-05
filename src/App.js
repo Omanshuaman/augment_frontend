@@ -7,7 +7,7 @@ import Admin from "./pages/Admin";
 function App() {
   return (
     <div className="App">
-      <Route exact path="/" component={Map} />
+      <Route path="/" component={Map} exact />
       <Route path="/admin" component={Admin} />
     </div>
   );
