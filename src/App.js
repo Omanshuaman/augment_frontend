@@ -8,7 +8,6 @@ function App() {
   return (
     <div className="App">
       <Route exact path="/" component={Map} />
-
       <Route exact path="/admin" component={Admin} />
     </div>
   );

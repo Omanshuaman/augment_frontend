@@ -22,7 +22,7 @@ const Login = ({ setonClick1 }) => {
   const [loading, setLoading] = useState(false);
   const toast = useToast();
   const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: "https://yellowclassbackend.up.railway.app",
   });
   const handleClick = () => {
     setShow(!show);
