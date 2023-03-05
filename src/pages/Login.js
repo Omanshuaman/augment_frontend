@@ -49,7 +49,7 @@ const Login = ({ setonClick1 }) => {
         },
       };
 
-      const { data } = await axiosInstance.post(
+      const { data } = await axios.post(
         "/api/user/login",
         {
           email,

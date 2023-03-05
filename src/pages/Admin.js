@@ -98,7 +98,7 @@ const Admin = () => {
 
   const fetchChats = async () => {
     try {
-      const { data } = await axiosInstance.get("/api/todo");
+      const { data } = await axios.get("/api/todo");
 
       setDetails(data);
       console.log(details);
@@ -118,7 +118,7 @@ const Admin = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axiosInstance.post(
+      const { data } = await axios.post(
         `/api/user/change-password/${user._id}`,
         { password },
         config
@@ -162,7 +162,7 @@ const Admin = () => {
         },
       };
 
-      const { data } = await axiosInstance.post(
+      const { data } = await axios.post(
         "/api/user/login",
         {
           email,

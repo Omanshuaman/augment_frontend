@@ -46,7 +46,7 @@ const Table = () => {
     };
 
     try {
-      const res = await axiosInstance.post("/api/todo", newPin);
+      const res = await axios.post("/api/todo", newPin);
       setPins([...pins, res.data]);
       history.push("/");
     } catch (err) {
