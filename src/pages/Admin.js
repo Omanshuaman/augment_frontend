@@ -8,7 +8,6 @@ import {
   Button,
 } from "@material-ui/core";
 import { deepPurple, green } from "@material-ui/core/colors";
-import List from "./List";
 import axios from "axios";
 import { ChatState } from "../Context/ChatProvider";
 import { useHistory } from "react-router-dom";
@@ -20,41 +19,15 @@ import {
   InputGroup,
   InputRightElement,
   VStack,
-  Center,
   useToast,
 } from "@chakra-ui/react";
 import Posts from "./Posts";
 
-import {
-  TableContainer,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  Tooltip,
-} from "@material-ui/core";
 import { orange } from "@material-ui/core/colors";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { Link } from "react-router-dom";
-import VisibilityIcon from "@material-ui/icons/Visibility";
 import ProfileModal from "./ProfileModal";
 import Cookies from "universal-cookie";
-import Homepage from "./HomePage";
 import Pagination1 from "./Pagy";
-import {
-  Container,
-  Tabs,
-  TabList,
-  TabPanels,
-  Tab,
-  TabPanel,
-} from "@chakra-ui/react";
-import Login from "./Login";
-import Signup from "./Signup";
+import { Container } from "@chakra-ui/react";
 // import required modules
 import { useDisclosure } from "@chakra-ui/react";
 import {
@@ -73,8 +46,6 @@ import {
   MenuItem,
   MenuDivider,
 } from "@chakra-ui/react";
-import jwt_decode from "jwt-decode";
-import Tables from "./Table";
 const useStyles = makeStyles({
   headingColor: {
     backgroundColor: deepPurple[400],
@@ -105,23 +76,14 @@ const Admin = () => {
   const [password, setPassword] = useState(null);
   const { user, setUser } = ChatState();
   const history = useHistory();
-  const [pins, setPins] = useState([]);
   const toast = useToast();
 
-  const [student, setStudent] = useState({
-    stuname: "",
-    email: "",
-  });
-  const [status, setStatus] = useState();
   const myStorage = window.localStorage;
-  const mapRef = React.useRef();
 
-  const [markers, setMarkers] = useState([]);
-
-  const [longitude, setLongitude] = useState(null);
-  const [latitude, setLatitude] = useState(null);
   const cookies = new Cookies();
-
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
   const {
     isOpen: isLoginOpen,
     onOpen: onLoginOpen,
@@ -134,13 +96,9 @@ const Admin = () => {
   };
   const { details, setDetails } = ChatState();
 
-  const [organizied, setOrganized] = useState();
-
-  const [students, setStudents] = useState([]);
-
   const fetchChats = async () => {
     try {
-      const { data } = await axios.get("/api/todo");
+      const { data } = await axiosInstance.get("/api/todo");
 
       setDetails(data);
       console.log(details);
@@ -160,7 +118,7 @@ const Admin = () => {
           Authorization: `Bearer ${user.token}`,
         },
       };
-      const { data } = await axios.post(
+      const { data } = await axiosInstance.post(
         `/api/user/change-password/${user._id}`,
         { password },
         config
@@ -204,7 +162,7 @@ const Admin = () => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await axiosInstance.post(
         "/api/user/login",
         {
           email,

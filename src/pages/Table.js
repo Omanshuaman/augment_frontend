@@ -30,32 +30,14 @@ const Table = () => {
   const { user } = ChatState();
   const history = useHistory();
   const [pins, setPins] = useState([]);
-
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
   const [student, setStudent] = useState({
     stuname: "",
     email: "",
   });
-  const [status, setStatus] = useState();
 
-  function onTextFieldChange(e) {
-    setStudent({
-      ...student,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  async function onFormSubmit(e) {
-    e.preventDefault();
-    try {
-      await axios.post(`http://localhost:3000/students`, student);
-      setStatus(true);
-    } catch (error) {
-      console.log("Something is Wrong");
-    }
-  }
-  //   if (status) {
-  //     return <Home />;
-  //   }
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPin = {
@@ -64,7 +46,7 @@ const Table = () => {
     };
 
     try {
-      const res = await axios.post("/api/todo", newPin);
+      const res = await axiosInstance.post("/api/todo", newPin);
       setPins([...pins, res.data]);
       history.push("/");
     } catch (err) {

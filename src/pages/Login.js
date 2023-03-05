@@ -5,15 +5,12 @@ import {
   Input,
   InputGroup,
   InputRightElement,
-  Center,
-  Text,
   useToast,
   VStack,
 } from "@chakra-ui/react";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
-import { useHistory } from "react-router-dom";
 import { ChatState } from "../Context/ChatProvider";
 
 const Login = ({ setonClick1 }) => {
@@ -24,8 +21,9 @@ const Login = ({ setonClick1 }) => {
   const { setUser } = ChatState();
   const [loading, setLoading] = useState(false);
   const toast = useToast();
-  const history = useHistory();
-
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
   const handleClick = () => {
     setShow(!show);
   };
@@ -51,7 +49,7 @@ const Login = ({ setonClick1 }) => {
         },
       };
 
-      const { data } = await axios.post(
+      const { data } = await axiosInstance.post(
         "/api/user/login",
         {
           email,
