@@ -32,7 +32,6 @@ const List = () => {
   const { user, setUser } = ChatState();
   const { details, setDetails } = ChatState();
 
-
   const axiosInstance = axios.create({
     baseURL: process.env.REACT_APP_API_URL,
   });
@@ -44,7 +43,7 @@ const List = () => {
         },
       };
       console.log(user.token);
-      const { data } = await axiosInstance.get("/api/todo/organize", config);
+      const { data } = await axios.get("/api/todo/organize", config);
 
       setDetails(data);
       console.log(details);
